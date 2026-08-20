@@ -14,18 +14,94 @@
       margin: 0 auto;
       padding: 56px 20px 80px;
     }
-    .content-page h1 { font-size: clamp(1.6rem, 4vw, 2.2rem); margin-bottom: 8px; }
-    .content-page h2 { font-size: 1.2rem; margin: 36px 0 12px; color: var(--forest-mid); }
-    .content-page p { color: var(--text-mid); line-height: 1.75; margin-bottom: 14px; font-size: .97rem; }
+    .content-page h2 {
+      font-size: 1.2rem;
+      margin: 40px 0 12px;
+      color: var(--forest-mid);
+    }
+    .content-page p {
+      color: var(--text-mid);
+      line-height: 1.75;
+      margin-bottom: 14px;
+      font-size: .97rem;
+    }
     .content-page a { color: var(--forest-light); text-decoration: underline; text-underline-offset: 3px; }
+
+    /* ── Doação ── */
     .donation-box {
-      background: var(--cream-dark);
+      background: linear-gradient(135deg, #0d2b1a 0%, #1a4a2e 100%);
+      border-radius: var(--radius-lg);
+      padding: 36px 32px;
+      margin-top: 40px;
+      text-align: center;
+      color: white;
+    }
+    .donation-box h2 {
+      color: var(--gold);
+      margin-top: 0;
+      font-size: 1.4rem;
+    }
+    .donation-box p {
+      color: rgba(255,255,255,.78);
+      max-width: 440px;
+      margin: 0 auto 28px;
+    }
+    .pix-card {
+      background: white;
       border-radius: var(--radius-md);
       padding: 28px 24px;
-      margin-top: 36px;
-      border-left: 4px solid var(--gold);
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      box-shadow: 0 8px 32px rgba(0,0,0,.25);
     }
-    .donation-box h2 { margin-top: 0; }
+    .pix-card img {
+      width: 180px;
+      height: 180px;
+      image-rendering: pixelated;
+      border-radius: 8px;
+    }
+    .pix-key {
+      font-family: 'Baloo 2', sans-serif;
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--forest-mid);
+      background: var(--cream-dark);
+      border-radius: 8px;
+      padding: 8px 18px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      transition: background var(--transition);
+      border: none;
+      width: 100%;
+      justify-content: center;
+    }
+    .pix-key:hover { background: #e8f0e0; }
+    .pix-key__label {
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--text-light);
+      display: block;
+      margin-bottom: 2px;
+    }
+    .copied-msg {
+      font-size: .8rem;
+      color: var(--forest-light);
+      font-weight: 700;
+      min-height: 20px;
+      transition: opacity .3s;
+    }
+    .donation-note {
+      font-size: .8rem;
+      color: rgba(255,255,255,.5);
+      margin-top: 20px !important;
+      margin-bottom: 0 !important;
+    }
   </style>
 </head>
 <body>
@@ -60,10 +136,10 @@
 
     <h2>Como funciona?</h2>
     <p>
-      Cada livro tem uma série de páginas ilustradas. Em alguns momentos, a história pede que você e a criança tomem uma decisão juntos. Cada escolha leva a um caminho diferente. É possível reiniciar e explorar outros caminhos.
+      Cada livro tem uma série de páginas ilustradas. Em alguns momentos, a história pede que você e a criança tomem uma decisão juntos. Cada escolha leva a um caminho diferente, e é possível reiniciar para explorar outros caminhos.
     </p>
     <p>
-      O progresso fica salvo no dispositivo (via localStorage), então é possível continuar de onde parou. Nenhuma informação é enviada para servidores.
+      O progresso fica salvo no dispositivo — nenhuma informação é enviada a servidores.
     </p>
 
     <h2>Licença</h2>
@@ -71,15 +147,30 @@
       Os livros são disponibilizados sob a licença <a href="../licenca/">Creative Commons CC BY 4.0</a>. Você pode baixar, compartilhar, imprimir e adaptar, desde que a autoria seja atribuída corretamente.
     </p>
 
+    <!-- DOAÇÃO -->
     <div class="donation-box" id="doacao">
       <h2>❤️ Apoie o projeto</h2>
       <p>
-        Todos os livros desta biblioteca são disponibilizados gratuitamente. Se alguma história proporcionou um momento especial para sua família, você pode contribuir voluntariamente para ajudar na criação de novas aventuras.
+        Todos os livros são gratuitos. Se uma história proporcionou um momento especial para sua família, você pode contribuir voluntariamente para ajudar a criar novas aventuras.
       </p>
-      <p>
-        <strong>Pix:</strong> Entre em contato pelo GitHub para obter a chave Pix.
+
+      <div class="pix-card">
+        <img
+          src="../assets/qrcode-pix.png"
+          alt="QR Code Pix — tarcisiogb@gmail.com"
+        >
+        <div>
+          <span class="pix-key__label">Chave Pix</span>
+          <button class="pix-key" onclick="copiarPix()" title="Copiar chave Pix">
+            📋 tarcisiogb@gmail.com
+          </button>
+        </div>
+        <div class="copied-msg" id="copiedMsg" style="opacity:0">✅ Chave copiada!</div>
+      </div>
+
+      <p class="donation-note">
+        Qualquer valor é bem-vindo e muito apreciado 💚
       </p>
-      <a class="btn btn--primary btn--sm" href="https://github.com/tgbhubs" target="_blank" rel="noopener">Ver no GitHub</a>
     </div>
 
   </div>
@@ -93,6 +184,16 @@
     <a href="../privacidade/">Privacidade</a>
   </p>
 </footer>
+
+<script>
+function copiarPix() {
+  navigator.clipboard.writeText('tarcisiogb@gmail.com').then(function() {
+    var msg = document.getElementById('copiedMsg');
+    msg.style.opacity = '1';
+    setTimeout(function() { msg.style.opacity = '0'; }, 2500);
+  });
+}
+</script>
 
 </body>
 </html>
