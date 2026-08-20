@@ -2,11 +2,37 @@
   {
     "id": "lucas-floresta-azul",
     "titulo": "Lucas e o Mistério da Floresta Azul",
-    "descricao": "Uma aventura mágica em que cada escolha muda o caminho.",
+    "descricao": "Lucas e seu pai entram em uma floresta mágica cheia de mistérios. Em cada momento da aventura, você decide o que acontece.",
+    "tipo": "interativo",
+    "colecao": "lucas",
+    "temas": ["aventura", "magia", "amizade"],
     "faixaEtaria": "5–7 anos",
     "tempoLeitura": "10–15 minutos",
     "cover": "assets/books/lucas-floresta-azul/page-01.webp",
-    "tags": ["aventura", "magia", "amizade"],
     "publicado": true
+  },
+  {
+    "id": "lucas-canarinho",
+    "titulo": "Lucas e o Carrinho Canarinho da Copa",
+    "descricao": "No dia do jogo do Brasil, Lucas e a família montam um estádio na sala com almofadas. O Canarinho Veloz é o jogador estrela!",
+    "tipo": "estatico",
+    "colecao": "lucas",
+    "temas": ["familia", "copa", "aventura"],
+    "faixaEtaria": "4–7 anos",
+    "tempoLeitura": "8–12 minutos",
+    "cover": "assets/books/lucas-canarinho/page-01.webp",
+    "publicado": false
+  },
+  {
+    "id": "lucas-corrida",
+    "titulo": "Lucas e a Corrida até o Estádio da Copa",
+    "descricao": "Uma missão especial: levar a Bandeira da Sorte para a casa dos avós antes do jogo começar. Uma aventura cheia de surpresas no caminho!",
+    "tipo": "estatico",
+    "colecao": "lucas",
+    "temas": ["familia", "copa", "amizade"],
+    "faixaEtaria": "4–7 anos",
+    "tempoLeitura": "8–12 minutos",
+    "cover": "assets/books/lucas-corrida/page-01.webp",
+    "publicado": false
   }
 ]
