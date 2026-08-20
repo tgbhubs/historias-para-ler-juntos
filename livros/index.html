@@ -58,12 +58,10 @@
     }
     .filter-chip:hover { border-color: var(--forest-light); color: var(--forest-mid); }
     .filter-chip.on {
-      background: var(--forest-mid);
-      border-color: var(--forest-mid);
+      background: var(--chip-color, var(--forest-mid));
+      border-color: var(--chip-color, var(--forest-mid));
       color: white;
     }
-    .filter-chip.on.tipo-interativo { background: #7c3aed; border-color: #7c3aed; }
-    .filter-chip.on.tipo-estatico   { background: var(--blue-magic); border-color: var(--blue-magic); }
 
     /* Resultado count */
     .results-bar {
@@ -253,9 +251,9 @@
     <!-- Linha 1: Tipo -->
     <div class="filters-row">
       <span class="filters-label">Tipo</span>
-      <button class="filter-chip on" data-filter="tipo" data-value="todos">Todos</button>
-      <button class="filter-chip tipo-interativo" data-filter="tipo" data-value="interativo">✦ Interativo</button>
-      <button class="filter-chip tipo-estatico"   data-filter="tipo" data-value="estatico">📖 História</button>
+      <button class="filter-chip on" data-filter="tipo" data-value="todos" style="--chip-color:var(--forest-mid)">Todos</button>
+      <button class="filter-chip" data-filter="tipo" data-value="interativo" style="--chip-color:#7c3aed">✦ Interativo</button>
+      <button class="filter-chip" data-filter="tipo" data-value="estatico"   style="--chip-color:var(--blue-magic)">📖 História</button>
     </div>
 
     <!-- Linha 2: Coleção + Temas (preenchidos via JS) -->
