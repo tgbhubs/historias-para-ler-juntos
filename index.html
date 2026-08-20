@@ -4,30 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Histórias para Ler Juntos</title>
-  <meta name="description" content="Livros infantis interativos gratuitos. Histórias para pais, mães, avós e filhos lerem juntos.">
-
-  <meta property="og:url" content="https://tgbhubs.github.io/historias-para-ler-juntos/">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&family=Nunito:wght@500;600;700&display=swap" rel="stylesheet">
-
-  <!-- Favicon -->
+  <meta name="description" content="Livros infantis interativos gratuitos para pais e filhos lerem juntos.">
   <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png">
-
-  <!-- Apple / iOS -->
   <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="apple-mobile-web-app-title" content="Histórias para Ler Juntos">
-
-  <!-- Android / PWA -->
   <link rel="manifest" href="assets/site.webmanifest">
   <meta name="theme-color" content="#0d2b1a">
-
-  <!-- Open Graph (WhatsApp, Facebook, etc.) -->
   <meta property="og:title" content="Histórias para Ler Juntos">
   <meta property="og:description" content="Livros infantis interativos e gratuitos para pais e filhos lerem juntos.">
   <meta property="og:image" content="https://tgbhubs.github.io/historias-para-ler-juntos/assets/og-image.png">
@@ -36,110 +19,178 @@
   <meta property="og:url" content="https://tgbhubs.github.io/historias-para-ler-juntos/">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="pt_BR">
-
-  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Histórias para Ler Juntos">
-  <meta name="twitter:description" content="Livros infantis interativos e gratuitos para pais e filhos lerem juntos.">
   <meta name="twitter:image" content="https://tgbhubs.github.io/historias-para-ler-juntos/assets/og-image.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&family=Nunito:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css">
-
   <style>
-    /* ── Destaque do livro ── */
-    .featured {
-      padding: 64px 0;
-      background: var(--cream-dark);
+    /* ── Hero compacto ── */
+    .home-hero {
+      background: linear-gradient(135deg, var(--forest-deep) 0%, #1a4a2e 100%);
+      padding: 28px 20px 24px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
     }
-    .featured__inner {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 48px;
-      align-items: center;
-      max-width: 860px;
-      margin: 0 auto;
-      padding: 0 20px;
+    .home-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 20% 50%, rgba(59,130,246,.12) 0%, transparent 60%),
+                  radial-gradient(ellipse at 80% 50%, rgba(245,158,11,.08) 0%, transparent 50%);
+      pointer-events: none;
     }
-    .featured__cover {
-      width: 100%;
-      border-radius: var(--radius-md);
-      box-shadow: var(--shadow-deep);
-      aspect-ratio: 4/3;
-      object-fit: cover;
+    .home-hero__inner {
+      position: relative; z-index: 1;
+      max-width: 680px; margin: 0 auto;
+      display: flex; align-items: center;
+      justify-content: space-between; gap: 20px;
+      flex-wrap: wrap;
     }
-    .featured__eyebrow {
-      font-size: .75rem;
-      font-weight: 800;
-      letter-spacing: 2px;
+    .home-hero__text { text-align: left; flex: 1; min-width: 220px; }
+    .home-hero__eyebrow {
+      font-size: .72rem; font-weight: 800;
+      letter-spacing: 1.8px; text-transform: uppercase;
+      color: var(--gold-light); margin-bottom: 6px;
+    }
+    .home-hero__title {
+      font-family: 'Baloo 2', sans-serif;
+      font-size: clamp(1.3rem, 3.5vw, 1.9rem);
+      font-weight: 800; color: white;
+      line-height: 1.12; margin-bottom: 6px;
+    }
+    .home-hero__title em { font-style: normal; color: var(--gold); }
+    .home-hero__sub {
+      font-size: .85rem; color: rgba(255,255,255,.65);
+      line-height: 1.55;
+    }
+    .home-hero__actions {
+      display: flex; gap: 8px; flex-wrap: wrap;
+      align-items: center; flex-shrink: 0;
+    }
+    @media (max-width: 520px) {
+      .home-hero__inner { flex-direction: column; text-align: center; }
+      .home-hero__text { text-align: center; }
+      .home-hero__actions { justify-content: center; }
+    }
+
+    /* ── Biblioteca inline ── */
+    .home-library { max-width: 960px; margin: 0 auto; padding: 28px 20px 16px; }
+    .home-library__header {
+      display: flex; align-items: center;
+      justify-content: space-between; margin-bottom: 20px;
+    }
+    .home-library__title {
+      font-family: 'Baloo 2', sans-serif;
+      font-size: 1rem; font-weight: 800;
+      color: var(--text-light); letter-spacing: .5px;
       text-transform: uppercase;
+    }
+    .home-library__link {
+      font-size: .82rem; font-weight: 700;
       color: var(--forest-light);
-      margin-bottom: 10px;
-    }
-    .featured__title {
-      font-size: clamp(1.5rem, 3.5vw, 2rem);
-      font-weight: 800;
-      color: var(--text-dark);
-      line-height: 1.15;
-      margin-bottom: 12px;
-    }
-    .featured__desc {
-      color: var(--text-mid);
-      font-size: .95rem;
-      line-height: 1.65;
-      margin-bottom: 12px;
-    }
-    .featured__meta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-bottom: 24px;
-    }
-    .featured__actions {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
+      text-decoration: underline; text-underline-offset: 3px;
     }
 
-    /* ── Por que este projeto ── */
-    .about-strip {
-      padding: 64px 20px;
-      max-width: 680px;
-      margin: 0 auto;
-      text-align: center;
-    }
-    .about-strip__icon { font-size: 2.4rem; margin-bottom: 16px; }
-    .about-strip__text {
-      font-size: 1.05rem;
-      color: var(--text-mid);
-      line-height: 1.75;
+    /* Grade de livros */
+    .home-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+      gap: 20px;
     }
 
-    /* ── Doação ── */
-    .donation {
-      background: linear-gradient(135deg, var(--forest-deep) 0%, #1e3a28 100%);
-      padding: 56px 20px;
-      text-align: center;
-      color: var(--white);
+    /* Card */
+    .hcard {
+      background: white;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: var(--shadow-card);
+      transition: transform .18s, box-shadow .18s;
+      display: flex; flex-direction: column;
+      cursor: pointer;
     }
-    .donation h2 {
-      font-size: clamp(1.3rem, 3vw, 1.7rem);
-      color: var(--gold);
-      margin-bottom: 12px;
+    .hcard:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-deep);
     }
-    .donation p {
-      color: rgba(255,255,255,.75);
-      max-width: 480px;
-      margin: 0 auto 28px;
-      font-size: .95rem;
-      line-height: 1.65;
+    .hcard__cover-wrap {
+      width: 100%; aspect-ratio: 3/2;
+      overflow: hidden; position: relative;
+      background: var(--forest-mid);
     }
+    .hcard__cover {
+      width: 100%; height: 100%;
+      object-fit: cover; display: block;
+      transition: transform .4s ease;
+    }
+    .hcard:hover .hcard__cover { transform: scale(1.04); }
+    .hcard__badge-tipo {
+      position: absolute; top: 8px; left: 8px;
+      font-family: 'Baloo 2', sans-serif;
+      font-size: .65rem; font-weight: 800;
+      padding: 2px 9px; border-radius: 20px;
+      text-transform: uppercase; letter-spacing: .4px;
+    }
+    .hcard__badge-tipo.interativo { background: #7c3aed; color: white; }
+    .hcard__badge-tipo.estatico   { background: var(--blue-magic); color: white; }
+    .hcard__em-breve {
+      position: absolute; inset: 0;
+      background: rgba(13,43,26,.6);
+      display: flex; align-items: center; justify-content: center;
+      backdrop-filter: blur(2px);
+    }
+    .hcard__em-breve span {
+      font-family: 'Baloo 2', sans-serif; font-size: .75rem;
+      font-weight: 800; color: white;
+      background: rgba(0,0,0,.45); padding: 4px 12px;
+      border-radius: 20px; letter-spacing: 1px; text-transform: uppercase;
+    }
+    .hcard__body { padding: 12px 14px 16px; flex: 1; display: flex; flex-direction: column; gap: 5px; }
+    .hcard__title {
+      font-family: 'Baloo 2', sans-serif;
+      font-size: .95rem; font-weight: 800;
+      color: var(--text-dark); line-height: 1.2;
+    }
+    .hcard__desc {
+      font-size: .8rem; color: var(--text-light);
+      line-height: 1.45; flex: 1;
+      display: -webkit-box; -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical; overflow: hidden;
+    }
+    .hcard__meta { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 2px; }
+    .hcard__btn {
+      margin-top: 10px;
+      display: inline-flex; align-items: center; gap: 6px;
+      font-family: 'Baloo 2', sans-serif; font-size: .85rem; font-weight: 700;
+      background: var(--gold); color: var(--forest-deep);
+      padding: 7px 16px; border-radius: 30px; border: none;
+      box-shadow: 0 3px 0 #b45309; transition: all .15s;
+      cursor: pointer; text-decoration: none;
+      min-height: 36px;
+    }
+    .hcard__btn:hover { transform: translateY(-2px); box-shadow: 0 5px 0 #b45309; }
 
-    /* Mobile adjustments */
-    @media (max-width: 600px) {
-      .featured__inner {
-        grid-template-columns: 1fr;
-        gap: 24px;
-      }
-      .featured__cover { max-width: 300px; margin: 0 auto; }
+    /* ── Rodapé da home: sobre + doação compactos ── */
+    .home-footer-strip {
+      background: var(--cream-dark);
+      border-top: 1px solid rgba(0,0,0,.06);
+      padding: 32px 20px;
+    }
+    .home-footer-strip__inner {
+      max-width: 760px; margin: 0 auto;
+      display: flex; gap: 40px; flex-wrap: wrap;
+      align-items: flex-start;
+    }
+    .home-footer-strip__block { flex: 1; min-width: 220px; }
+    .home-footer-strip__block h3 {
+      font-family: 'Baloo 2', sans-serif;
+      font-size: .95rem; font-weight: 800;
+      color: var(--text-dark); margin-bottom: 6px;
+    }
+    .home-footer-strip__block p {
+      font-size: .82rem; color: var(--text-light);
+      line-height: 1.6; margin-bottom: 10px;
     }
   </style>
 </head>
@@ -148,9 +199,7 @@
 <!-- Cabeçalho -->
 <header class="site-header">
   <div class="site-header__inner">
-    <a class="site-logo" href="/">
-      🌿 <span>Histórias</span> para Ler Juntos
-    </a>
+    <a class="site-logo" href="/">🌿 <span>Histórias</span> para Ler Juntos</a>
     <nav class="site-nav" aria-label="Menu principal">
       <a href="livros/">Biblioteca</a>
       <a href="sobre/">Sobre</a>
@@ -158,76 +207,46 @@
   </div>
 </header>
 
-<!-- Hero -->
-<section class="section--hero" aria-label="Bem-vindo">
-  <div class="container" style="position:relative;z-index:1">
-    <p class="hero__eyebrow">📖 Livros infantis interativos · gratuitos</p>
-    <h1 class="hero__title">
-      Histórias para<br><em>ler juntos</em>
-    </h1>
-    <p class="hero__sub">
-      Aventuras em que cada escolha muda o caminho. Feitas para pais, mães, avós e filhos descobrirem juntos.
-    </p>
-    <div class="hero__actions">
-      <a class="btn btn--primary btn--lg" href="livros/">Explorar histórias</a>
-      <a class="btn btn--ghost btn--lg" href="sobre/">Saiba mais</a>
+<!-- Hero compacto -->
+<section class="home-hero">
+  <div class="home-hero__inner">
+    <div class="home-hero__text">
+      <p class="home-hero__eyebrow">📖 Livros infantis interativos · gratuitos</p>
+      <h1 class="home-hero__title">Histórias para<br><em>ler juntos</em></h1>
+      <p class="home-hero__sub">Aventuras em que cada escolha muda o caminho — para pais e filhos descobrirem juntos.</p>
+    </div>
+    <div class="home-hero__actions">
+      <a class="btn btn--primary" href="sobre/">Sobre o projeto</a>
     </div>
   </div>
 </section>
 
-<!-- Destaque: primeiro livro -->
-<section class="featured" aria-label="Livro em destaque">
-  <div class="featured__inner">
-    <img
-      class="featured__cover"
-      src="assets/books/lucas-floresta-azul/page-01.webp"
-      alt="Capa de Lucas e o Mistério da Floresta Azul"
-      loading="eager"
-    >
-    <div>
-      <p class="featured__eyebrow">⭐ Nova história disponível</p>
-      <h2 class="featured__title">Lucas e o Mistério da Floresta Azul</h2>
-      <p class="featured__desc">
-        Lucas e seu pai entram em uma floresta mágica cheia de mistérios. Em cada momento da aventura, você decide o que acontece.
-      </p>
-      <div class="featured__meta">
-        <span class="tag">👧 5–7 anos</span>
-        <span class="tag">⏱ 10–15 min</span>
-        <span class="tag tag--forest">aventura</span>
-        <span class="tag tag--forest">magia</span>
-      </div>
-      <div class="featured__actions">
-        <a class="btn btn--primary" href="livro/?id=lucas-floresta-azul">Começar aventura</a>
-        <a class="btn btn--secondary btn--sm" href="assets/books/lucas-floresta-azul/lucas-e-o-misterio-da-floresta-azul.pdf" download>⬇ Baixar PDF</a>
-      </div>
-    </div>
+<!-- Biblioteca inline -->
+<section class="home-library">
+  <div class="home-library__header">
+    <span class="home-library__title">📚 Histórias disponíveis</span>
+    <a class="home-library__link" href="livros/">Ver com filtros →</a>
+  </div>
+  <div class="home-grid" id="homeGrid">
+    <!-- preenchido via JS -->
   </div>
 </section>
 
-<!-- Sobre o projeto -->
-<section aria-label="Sobre">
-  <div class="about-strip">
-    <div class="about-strip__icon">💚</div>
-    <h2 class="section__title" style="margin-bottom:14px">Por que este projeto existe?</h2>
-    <p class="about-strip__text">
-      Ler juntos é um dos momentos mais simples e mais bonitos que adultos e crianças podem compartilhar. Estas histórias foram criadas para acontecer nesse espaço — sem pressa, sem tela dominante, só a história e as pessoas que você ama.
-    </p>
-    <div style="margin-top:24px">
-      <a class="btn btn--secondary" href="sobre/">Saiba mais sobre o projeto</a>
+<!-- Sobre + Doação compactos -->
+<div class="home-footer-strip">
+  <div class="home-footer-strip__inner">
+    <div class="home-footer-strip__block">
+      <h3>💚 Sobre o projeto</h3>
+      <p>Histórias criadas para serem lidas em voz alta — adultos e crianças juntos, sem pressa.</p>
+      <a class="btn btn--secondary btn--sm" href="sobre/">Saiba mais</a>
+    </div>
+    <div class="home-footer-strip__block">
+      <h3>❤️ Apoie</h3>
+      <p>Todos os livros são gratuitos. Contribuições voluntárias ajudam a criar novas aventuras.</p>
+      <a class="btn btn--secondary btn--sm" href="sobre/#doacao">Como apoiar</a>
     </div>
   </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- Apoie -->
-<section class="donation" aria-label="Apoie o projeto">
-  <h2>Apoie o projeto ❤️</h2>
-  <p>
-    Todos os livros são gratuitos. Se uma história proporcionou um momento especial para sua família, você pode contribuir voluntariamente para ajudar a criar novas aventuras.
-  </p>
-  <a class="btn btn--primary" href="sobre/#doacao">Ver como apoiar</a>
-</section>
+</div>
 
 <!-- Rodapé -->
 <footer class="site-footer">
@@ -239,6 +258,69 @@
     <a href="sobre/">Sobre</a>
   </p>
 </footer>
+
+<script>
+(function () {
+  var temaLabels = {
+    aventura:'🗺 Aventura', magia:'✨ Magia', amizade:'💚 Amizade',
+    familia:'👨‍👩‍👧 Família', copa:'⚽ Copa', noite:'🌙 Noite'
+  };
+
+  fetch('assets/js/catalog.json')
+    .then(function(r){ return r.json(); })
+    .then(function(catalog){
+      var grid = document.getElementById('homeGrid');
+      catalog.forEach(function(b){
+        grid.appendChild(buildCard(b));
+      });
+    });
+
+  function buildCard(b){
+    var art = document.createElement('article');
+    art.className = 'hcard';
+
+    var tipoLabel = b.tipo === 'interativo' ? '✦ Interativo' : '📖 História';
+    var tagsHtml = (b.temas||[]).map(function(t){
+      return '<span class="tag tag--forest">' + (temaLabels[t]||t) + '</span>';
+    }).join('');
+
+    var coverSrc = b.cover ? b.cover : '';
+    var coverHtml = coverSrc
+      ? '<img class="hcard__cover" src="' + coverSrc + '" alt="' + esc(b.titulo) + '" loading="lazy">'
+      : '<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:2.5rem">📖</div>';
+
+    var breve = !b.publicado
+      ? '<div class="hcard__em-breve"><span>Em breve</span></div>' : '';
+
+    var btnHtml = b.publicado
+      ? '<a class="hcard__btn" href="livro/?id=' + b.id + '">Começar →</a>'
+      : '<button class="hcard__btn" disabled style="opacity:.45;cursor:default;box-shadow:none">Em breve</button>';
+
+    art.innerHTML =
+      '<div class="hcard__cover-wrap">' +
+        coverHtml +
+        '<span class="hcard__badge-tipo ' + (b.tipo||'') + '">' + tipoLabel + '</span>' +
+        breve +
+      '</div>' +
+      '<div class="hcard__body">' +
+        '<div class="hcard__title">' + esc(b.titulo) + '</div>' +
+        '<div class="hcard__desc">'  + esc(b.descricao||'') + '</div>' +
+        '<div class="hcard__meta">' +
+          (b.faixaEtaria ? '<span class="tag">👧 ' + esc(b.faixaEtaria) + '</span>' : '') +
+          (b.tempoLeitura ? '<span class="tag">⏱ ' + esc(b.tempoLeitura) + '</span>' : '') +
+          tagsHtml +
+        '</div>' +
+        btnHtml +
+      '</div>';
+
+    return art;
+  }
+
+  function esc(s){
+    return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+})();
+</script>
 
 </body>
 </html>
