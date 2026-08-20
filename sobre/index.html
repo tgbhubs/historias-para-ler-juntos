@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sobre — Histórias para Ler Juntos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&family=Nunito:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <style>
+    .content-page {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 56px 20px 80px;
+    }
+    .content-page h1 { font-size: clamp(1.6rem, 4vw, 2.2rem); margin-bottom: 8px; }
+    .content-page h2 { font-size: 1.2rem; margin: 36px 0 12px; color: var(--forest-mid); }
+    .content-page p { color: var(--text-mid); line-height: 1.75; margin-bottom: 14px; font-size: .97rem; }
+    .content-page a { color: var(--forest-light); text-decoration: underline; text-underline-offset: 3px; }
+    .donation-box {
+      background: var(--cream-dark);
+      border-radius: var(--radius-md);
+      padding: 28px 24px;
+      margin-top: 36px;
+      border-left: 4px solid var(--gold);
+    }
+    .donation-box h2 { margin-top: 0; }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="site-logo" href="../">🌿 <span>Histórias</span> para Ler Juntos</a>
+    <nav class="site-nav">
+      <a href="../livros/">Biblioteca</a>
+      <a href="../sobre/" class="active">Sobre</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="content-page">
+    <h1 class="section__title">Sobre o projeto</h1>
+    <p style="color:var(--text-light);margin-bottom:32px">Uma biblioteca de livros infantis interativos e gratuitos.</p>
+
+    <h2>O que é isso?</h2>
+    <p>
+      <em>Histórias para Ler Juntos</em> é uma biblioteca digital de livros infantis interativos. As histórias foram criadas para serem lidas em voz alta por adultos e crianças — com momentos de escolha que mudam o caminho da narrativa.
+    </p>
+    <p>
+      Nenhum cadastro é necessário. Nenhum dado pessoal é coletado. As histórias são gratuitas.
+    </p>
+
+    <h2>Quem criou?</h2>
+    <p>
+      As histórias e o site foram criados por <strong>Tarcísio Guadalupe Buzelin</strong>.
+    </p>
+
+    <h2>Como funciona?</h2>
+    <p>
+      Cada livro tem uma série de páginas ilustradas. Em alguns momentos, a história pede que você e a criança tomem uma decisão juntos. Cada escolha leva a um caminho diferente. É possível reiniciar e explorar outros caminhos.
+    </p>
+    <p>
+      O progresso fica salvo no dispositivo (via localStorage), então é possível continuar de onde parou. Nenhuma informação é enviada para servidores.
+    </p>
+
+    <h2>Licença</h2>
+    <p>
+      Os livros são disponibilizados sob a licença <a href="../licenca/">Creative Commons CC BY 4.0</a>. Você pode baixar, compartilhar, imprimir e adaptar, desde que a autoria seja atribuída corretamente.
+    </p>
+
+    <div class="donation-box" id="doacao">
+      <h2>❤️ Apoie o projeto</h2>
+      <p>
+        Todos os livros desta biblioteca são disponibilizados gratuitamente. Se alguma história proporcionou um momento especial para sua família, você pode contribuir voluntariamente para ajudar na criação de novas aventuras.
+      </p>
+      <p>
+        <strong>Pix:</strong> Entre em contato pelo GitHub para obter a chave Pix.
+      </p>
+      <a class="btn btn--primary btn--sm" href="https://github.com/tgbhubs" target="_blank" rel="noopener">Ver no GitHub</a>
+    </div>
+
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__logo">🌿 Histórias para Ler Juntos</div>
+  <p>Projeto criado por <strong style="color:rgba(255,255,255,.8)">Tarcísio Guadalupe Buzelin</strong></p>
+  <p style="margin-top:6px">
+    <a href="../licenca/">Licença CC BY 4.0</a> ·
+    <a href="../privacidade/">Privacidade</a>
+  </p>
+</footer>
+
+</body>
+</html>

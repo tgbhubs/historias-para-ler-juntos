@@ -1,0 +1,12 @@
+[
+  {
+    "id": "lucas-floresta-azul",
+    "titulo": "Lucas e o Mistério da Floresta Azul",
+    "descricao": "Uma aventura mágica em que cada escolha muda o caminho.",
+    "faixaEtaria": "5–7 anos",
+    "tempoLeitura": "10–15 minutos",
+    "cover": "assets/books/lucas-floresta-azul/page-01.webp",
+    "tags": ["aventura", "magia", "amizade"],
+    "publicado": true
+  }
+]

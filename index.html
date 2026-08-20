@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Histórias para Ler Juntos</title>
+  <meta name="description" content="Livros infantis interativos gratuitos. Histórias para pais, mães, avós e filhos lerem juntos.">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Histórias para Ler Juntos">
+  <meta property="og:description" content="Livros infantis interativos gratuitos para pais e filhos.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://tgbhubs.github.io/historias-para-ler-juntos/">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&family=Nunito:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+
+  <style>
+    /* ── Destaque do livro ── */
+    .featured {
+      padding: 64px 0;
+      background: var(--cream-dark);
+    }
+    .featured__inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    .featured__cover {
+      width: 100%;
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-deep);
+      aspect-ratio: 4/3;
+      object-fit: cover;
+    }
+    .featured__eyebrow {
+      font-size: .75rem;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--forest-light);
+      margin-bottom: 10px;
+    }
+    .featured__title {
+      font-size: clamp(1.5rem, 3.5vw, 2rem);
+      font-weight: 800;
+      color: var(--text-dark);
+      line-height: 1.15;
+      margin-bottom: 12px;
+    }
+    .featured__desc {
+      color: var(--text-mid);
+      font-size: .95rem;
+      line-height: 1.65;
+      margin-bottom: 12px;
+    }
+    .featured__meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 24px;
+    }
+    .featured__actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    /* ── Por que este projeto ── */
+    .about-strip {
+      padding: 64px 20px;
+      max-width: 680px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .about-strip__icon { font-size: 2.4rem; margin-bottom: 16px; }
+    .about-strip__text {
+      font-size: 1.05rem;
+      color: var(--text-mid);
+      line-height: 1.75;
+    }
+
+    /* ── Doação ── */
+    .donation {
+      background: linear-gradient(135deg, var(--forest-deep) 0%, #1e3a28 100%);
+      padding: 56px 20px;
+      text-align: center;
+      color: var(--white);
+    }
+    .donation h2 {
+      font-size: clamp(1.3rem, 3vw, 1.7rem);
+      color: var(--gold);
+      margin-bottom: 12px;
+    }
+    .donation p {
+      color: rgba(255,255,255,.75);
+      max-width: 480px;
+      margin: 0 auto 28px;
+      font-size: .95rem;
+      line-height: 1.65;
+    }
+
+    /* Mobile adjustments */
+    @media (max-width: 600px) {
+      .featured__inner {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+      .featured__cover { max-width: 300px; margin: 0 auto; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Cabeçalho -->
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="site-logo" href="/">
+      🌿 <span>Histórias</span> para Ler Juntos
+    </a>
+    <nav class="site-nav" aria-label="Menu principal">
+      <a href="livros/">Biblioteca</a>
+      <a href="sobre/">Sobre</a>
+    </nav>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="section--hero" aria-label="Bem-vindo">
+  <div class="container" style="position:relative;z-index:1">
+    <p class="hero__eyebrow">📖 Livros infantis interativos · gratuitos</p>
+    <h1 class="hero__title">
+      Histórias para<br><em>ler juntos</em>
+    </h1>
+    <p class="hero__sub">
+      Aventuras em que cada escolha muda o caminho. Feitas para pais, mães, avós e filhos descobrirem juntos.
+    </p>
+    <div class="hero__actions">
+      <a class="btn btn--primary btn--lg" href="livros/">Explorar histórias</a>
+      <a class="btn btn--ghost btn--lg" href="sobre/">Saiba mais</a>
+    </div>
+  </div>
+</section>
+
+<!-- Destaque: primeiro livro -->
+<section class="featured" aria-label="Livro em destaque">
+  <div class="featured__inner">
+    <img
+      class="featured__cover"
+      src="assets/books/lucas-floresta-azul/page-01.webp"
+      alt="Capa de Lucas e o Mistério da Floresta Azul"
+      loading="eager"
+    >
+    <div>
+      <p class="featured__eyebrow">⭐ Nova história disponível</p>
+      <h2 class="featured__title">Lucas e o Mistério da Floresta Azul</h2>
+      <p class="featured__desc">
+        Lucas e seu pai entram em uma floresta mágica cheia de mistérios. Em cada momento da aventura, você decide o que acontece.
+      </p>
+      <div class="featured__meta">
+        <span class="tag">👧 5–7 anos</span>
+        <span class="tag">⏱ 10–15 min</span>
+        <span class="tag tag--forest">aventura</span>
+        <span class="tag tag--forest">magia</span>
+      </div>
+      <div class="featured__actions">
+        <a class="btn btn--primary" href="livro/?id=lucas-floresta-azul">Começar aventura</a>
+        <a class="btn btn--secondary btn--sm" href="assets/books/lucas-floresta-azul/lucas-e-o-misterio-da-floresta-azul.pdf" download>⬇ Baixar PDF</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Sobre o projeto -->
+<section aria-label="Sobre">
+  <div class="about-strip">
+    <div class="about-strip__icon">💚</div>
+    <h2 class="section__title" style="margin-bottom:14px">Por que este projeto existe?</h2>
+    <p class="about-strip__text">
+      Ler juntos é um dos momentos mais simples e mais bonitos que adultos e crianças podem compartilhar. Estas histórias foram criadas para acontecer nesse espaço — sem pressa, sem tela dominante, só a história e as pessoas que você ama.
+    </p>
+    <div style="margin-top:24px">
+      <a class="btn btn--secondary" href="sobre/">Saiba mais sobre o projeto</a>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- Apoie -->
+<section class="donation" aria-label="Apoie o projeto">
+  <h2>Apoie o projeto ❤️</h2>
+  <p>
+    Todos os livros são gratuitos. Se uma história proporcionou um momento especial para sua família, você pode contribuir voluntariamente para ajudar a criar novas aventuras.
+  </p>
+  <a class="btn btn--primary" href="sobre/#doacao">Ver como apoiar</a>
+</section>
+
+<!-- Rodapé -->
+<footer class="site-footer">
+  <div class="site-footer__logo">🌿 Histórias para Ler Juntos</div>
+  <p>Projeto criado por <strong style="color:rgba(255,255,255,.8)">Tarcísio Guadalupe Buzelin</strong></p>
+  <p style="margin-top:6px">
+    <a href="licenca/">Licença CC BY 4.0</a> ·
+    <a href="privacidade/">Privacidade</a> ·
+    <a href="sobre/">Sobre</a>
+  </p>
+</footer>
+
+</body>
+</html>

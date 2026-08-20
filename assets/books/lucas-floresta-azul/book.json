@@ -1,0 +1,106 @@
+{
+  "id": "lucas-floresta-azul",
+  "titulo": "Lucas e o Mistério da Floresta Azul",
+  "autor": "Tarcísio Guadalupe Buzelin",
+  "descricao": "Lucas e seu pai entram em uma floresta mágica cheia de mistérios. Em cada momento da aventura, você decide o que acontece.",
+  "faixaEtaria": "5–7 anos",
+  "tempoLeitura": "10–15 minutos",
+  "licenca": "CC BY 4.0",
+  "cover": "page-01.webp",
+  "pdf": "lucas-e-o-misterio-da-floresta-azul.pdf",
+  "paginas": [
+    {
+      "id": "page-01",
+      "imagem": "page-01.webp",
+      "titulo": "A entrada secreta",
+      "texto": "No começo da noite, Lucas estava com Papai quando uma pequena luz azul apareceu entre as árvores. Ela os levou até uma passagem escondida.\n\nDo outro lado começava a Floresta Azul: um lugar de árvores luminosas, rios que brilhavam e caminhos que ninguém conhecia.\n\n— Acho que a floresta está convidando a gente — disse Papai.",
+      "participacao": "Pergunte a Lucas se ele entraria.",
+      "next": "page-02"
+    },
+    {
+      "id": "page-02",
+      "imagem": "page-02.webp",
+      "titulo": "A primeira escolha",
+      "texto": "Logo adiante, o caminho se dividiu. Um seguia perto do rio. O outro subia em direção às montanhas.\n\n— Qual caminho você escolheria? — perguntou Papai.",
+      "choices": [
+        { "label": "Seguir pelo rio", "emoji": "🌊", "target": "page-03" },
+        { "label": "Subir pela montanha", "emoji": "⛰️", "target": "page-06" }
+      ]
+    },
+    {
+      "id": "page-03",
+      "imagem": "page-03.webp",
+      "titulo": "O desafio do rio",
+      "texto": "O caminho do rio parecia tranquilo, mas as pedras estavam escorregadias. Lucas precisou observar onde pisar.\n\nQuando atravessaram, uma pequena raposa azul apareceu entre as flores.\n\n— Eu estava procurando vocês! — disse ela.",
+      "participacao": "Peça a Lucas para escolher três pedras que parecem mais seguras.",
+      "next": "page-04"
+    },
+    {
+      "id": "page-04",
+      "imagem": "page-04.webp",
+      "titulo": "A Raposa Azul",
+      "texto": "A Raposa Azul contou que o Cristal da Amizade havia desaparecido e que a floresta estava começando a perder sua magia.\n\n— Posso ajudar vocês a encontrar o caminho — disse ela.\n\nLucas percebeu que a raposa estava com uma pequena peça azul nas patas.\n\n— É um pedaço do cristal — explicou ela. — Encontrei perto do Jardim das Flores Azuis.",
+      "next": "page-05"
+    },
+    {
+      "id": "page-05",
+      "imagem": "page-05.webp",
+      "titulo": "O mapa escondido",
+      "texto": "A raposa levou Lucas e Papai até um pequeno baú escondido entre as flores. Dentro havia um mapa antigo da floresta e marcas que indicavam a trilha da montanha.\n\n— Talvez o restante do cristal esteja com a Coruja Guardiã — disse Papai.\n\nLucas guardou o mapa com cuidado.",
+      "next": "page-06"
+    },
+    {
+      "id": "page-06",
+      "imagem": "page-06.webp",
+      "titulo": "A trilha da montanha",
+      "texto": "A trilha subia cada vez mais. Lá do alto, Lucas conseguia enxergar a floresta inteira.\n\n— Uau! — disse ele. — Parece que as árvores formam um caminho!\n\nFoi então que ouviram um piado baixinho.",
+      "next": "page-07"
+    },
+    {
+      "id": "page-07",
+      "imagem": "page-07.webp",
+      "titulo": "A corujinha perdida",
+      "texto": "Entre os galhos, uma pequena corujinha estava assustada.\n\n— Eu me perdi da minha família — contou ela.\n\nLucas se aproximou devagar.\n\n— A gente pode ajudar você.\n\nA corujinha apontou para o topo da montanha.\n\n— Minha família está com a Coruja Guardiã.",
+      "participacao": "Pergunte a Lucas o que ele faria para ajudar a corujinha a se sentir segura.",
+      "next": "page-08"
+    },
+    {
+      "id": "page-08",
+      "imagem": "page-08.webp",
+      "titulo": "A Coruja Guardiã",
+      "texto": "No topo da montanha, a Coruja Guardiã esperava por eles. Entre suas asas brilhava o Cristal da Amizade.\n\n— O cristal estava perdido porque precisava de alguém disposto a ajudar — explicou a Coruja.\n\nLucas aproximou a pequena peça que a raposa havia encontrado. As duas partes começaram a brilhar.\n\n— Agora falta apenas uma escolha — disse a Coruja.",
+      "choices": [
+        { "label": "Reunir todos ao redor do cristal", "emoji": "✨", "target": "page-09" },
+        { "label": "Deixar o cristal escolher seu lugar", "emoji": "💙", "target": "page-10" }
+      ]
+    },
+    {
+      "id": "page-09",
+      "imagem": "page-09.webp",
+      "titulo": "O final da amizade",
+      "texto": "Lucas chamou a Raposa Azul, a Corujinha e a Coruja Guardiã.\n\nTodos ficaram juntos ao redor do cristal.\n\nA luz azul ficou cada vez mais forte.\n\nLucas sorriu.\n\n— Acho que ele queria que todo mundo estivesse junto.\n\nA floresta respondeu com milhares de pequenas luzes.",
+      "next": "page-11"
+    },
+    {
+      "id": "page-10",
+      "imagem": "page-10.webp",
+      "titulo": "O final da confiança",
+      "texto": "Lucas colocou o cristal sobre a pedra e deu um passo para trás.\n\nNinguém tocou nele.\n\nPor alguns segundos, nada aconteceu.\n\nEntão o cristal começou a brilhar sozinho. A luz subiu até as copas das árvores, como se a própria floresta tivesse escolhido seu novo coração.\n\nPapai colocou a mão no ombro de Lucas.\n\n— Às vezes, confiar também é uma forma de coragem.",
+      "next": "page-11"
+    },
+    {
+      "id": "page-11",
+      "imagem": "page-11.webp",
+      "titulo": "O retorno das cores",
+      "texto": "O azul se espalhou pelas árvores. Depois vieram o verde, o amarelo, o vermelho e muitas outras cores.\n\nA floresta inteira voltou a brilhar.\n\nA Coruja Guardiã sorriu.\n\n— Quando alguém ajuda de coração, a magia sempre encontra um caminho.\n\nLucas abraçou Papai.\n\n— Acho que essa foi a melhor parte da aventura.",
+      "next": "page-12"
+    },
+    {
+      "id": "page-12",
+      "imagem": "page-12.webp",
+      "titulo": "Até a próxima aventura",
+      "texto": "A porta de volta apareceu entre as árvores. Lucas e Papai caminharam para casa.\n\nAntes de sair, Lucas olhou para trás. A Raposa Azul acenou. As corujas voaram sobre a floresta.\n\nUma pequena luz azul piscou três vezes.\n\nLucas sorriu.\n\n— Papai... acho que a floresta vai precisar da gente de novo.\n\nPapai respondeu:\n\n— Então é bom a gente ficar preparado.",
+      "final": true
+    }
+  ]
+}

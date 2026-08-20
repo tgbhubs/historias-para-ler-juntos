@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Biblioteca — Histórias para Ler Juntos</title>
+  <meta name="description" content="Livros infantis interativos gratuitos para pais e filhos lerem juntos.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&family=Nunito:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <style>
+    .library-header {
+      padding: 48px 0 32px;
+      text-align: center;
+    }
+    .library-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 28px;
+      padding-bottom: 64px;
+    }
+    .book-card__cover-wrap {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 4/3;
+      overflow: hidden;
+      background: var(--forest-mid);
+    }
+    .book-card__cover {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .4s ease;
+    }
+    .book-card:hover .book-card__cover { transform: scale(1.04); }
+    .book-card__actions { display: flex; gap: 8px; flex-wrap: wrap; }
+    .empty-state {
+      text-align: center;
+      padding: 80px 20px;
+      color: var(--text-light);
+    }
+    .empty-state p { margin-top: 12px; font-size: .95rem; }
+  </style>
+</head>
+<body>
+
+<!-- Cabeçalho do site -->
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="site-logo" href="../">
+      🌿 <span>Histórias</span> para Ler Juntos
+    </a>
+    <nav class="site-nav" aria-label="Menu principal">
+      <a href="../livros/" class="active">Biblioteca</a>
+      <a href="../sobre/">Sobre</a>
+    </nav>
+  </div>
+</header>
+
+<!-- Conteúdo -->
+<main>
+  <div class="container">
+
+    <div class="library-header">
+      <h1 class="section__title">📚 Biblioteca</h1>
+      <p class="section__sub">Escolha uma história para ler juntos.</p>
+    </div>
+
+    <div class="library-grid" id="library-grid">
+      <!-- Preenchido via JS -->
+    </div>
+
+  </div>
+</main>
+
+<!-- Rodapé -->
+<footer class="site-footer">
+  <div class="site-footer__logo">🌿 Histórias para Ler Juntos</div>
+  <p>Projeto criado por <strong style="color:rgba(255,255,255,.8)">Tarcísio Guadalupe Buzelin</strong></p>
+  <p style="margin-top:6px">
+    <a href="../licenca/">Licença CC BY 4.0</a> ·
+    <a href="../privacidade/">Privacidade</a> ·
+    <a href="../sobre/">Sobre o projeto</a>
+  </p>
+</footer>
+
+<script>
+(function () {
+  var grid = document.getElementById('library-grid');
+
+  fetch('../assets/js/catalog.json')
+    .then(function (r) { return r.json(); })
+    .then(function (catalog) {
+      var published = catalog.filter(function (b) { return b.publicado; });
+
+      if (!published.length) {
+        grid.innerHTML = '<div class="empty-state"><div style="font-size:3rem">📖</div><p>Nenhuma história disponível ainda. Em breve!</p></div>';
+        return;
+      }
+
+      published.forEach(function (b) {
+        var tagsHtml = (b.tags || []).map(function (t) {
+          return '<span class="tag tag--forest">' + t + '</span>';
+        }).join('');
+
+        var card = document.createElement('article');
+        card.className = 'book-card';
+        card.innerHTML =
+          '<a href="../livro/?id=' + b.id + '" aria-label="Ler ' + b.titulo + '">' +
+            '<div class="book-card__cover-wrap">' +
+              '<img class="book-card__cover" src="../' + b.cover + '" alt="Capa de ' + b.titulo + '" loading="lazy">' +
+            '</div>' +
+          '</a>' +
+          '<div class="book-card__body">' +
+            '<h2 class="book-card__title">' + b.titulo + '</h2>' +
+            '<p class="book-card__desc">' + (b.descricao || '') + '</p>' +
+            '<div class="book-card__meta">' +
+              (b.faixaEtaria ? '<span class="tag">👧 ' + b.faixaEtaria + '</span>' : '') +
+              (b.tempoLeitura ? '<span class="tag">⏱ ' + b.tempoLeitura + '</span>' : '') +
+              tagsHtml +
+            '</div>' +
+            '<div class="book-card__actions">' +
+              '<a class="btn btn--primary btn--sm" href="../livro/?id=' + b.id + '">Começar aventura</a>' +
+            '</div>' +
+          '</div>';
+
+        grid.appendChild(card);
+      });
+    })
+    .catch(function () {
+      grid.innerHTML = '<div class="empty-state"><div style="font-size:3rem">🌲</div><p>Não foi possível carregar a biblioteca. Tente novamente.</p></div>';
+    });
+})();
+</script>
+
+</body>
+</html>
