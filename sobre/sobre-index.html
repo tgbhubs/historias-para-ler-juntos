@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sobre — Histórias para Ler Juntos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&family=Nunito:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <style>
+    .content-page {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 56px 20px 80px;
+    }
+    .content-page h2 {
+      font-size: 1.2rem;
+      margin: 40px 0 12px;
+      color: var(--forest-mid);
+    }
+    .content-page p {
+      color: var(--text-mid);
+      line-height: 1.75;
+      margin-bottom: 14px;
+      font-size: .97rem;
+    }
+    .content-page a { color: var(--forest-light); text-decoration: underline; text-underline-offset: 3px; }
+
+    /* ── Doação ── */
+    .donation-box {
+      background: linear-gradient(135deg, #0d2b1a 0%, #1a4a2e 100%);
+      border-radius: var(--radius-lg);
+      padding: 36px 32px;
+      margin-top: 40px;
+      text-align: center;
+      color: white;
+    }
+    .donation-box h2 {
+      color: var(--gold);
+      margin-top: 0;
+      font-size: 1.4rem;
+    }
+    .donation-box p {
+      color: rgba(255,255,255,.78);
+      max-width: 440px;
+      margin: 0 auto 28px;
+    }
+    .pix-card {
+      background: white;
+      border-radius: var(--radius-md);
+      padding: 28px 24px;
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      box-shadow: 0 8px 32px rgba(0,0,0,.25);
+    }
+    .pix-card img {
+      width: 180px;
+      height: 180px;
+      image-rendering: pixelated;
+      border-radius: 8px;
+    }
+    .pix-key {
+      font-family: 'Baloo 2', sans-serif;
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--forest-mid);
+      background: var(--cream-dark);
+      border-radius: 8px;
+      padding: 8px 18px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      transition: background var(--transition);
+      border: none;
+      width: 100%;
+      justify-content: center;
+    }
+    .pix-key:hover { background: #e8f0e0; }
+    .pix-key__label {
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--text-light);
+      display: block;
+      margin-bottom: 2px;
+    }
+    .copied-msg {
+      font-size: .8rem;
+      color: var(--forest-light);
+      font-weight: 700;
+      min-height: 20px;
+      transition: opacity .3s;
+    }
+    .donation-note {
+      font-size: .8rem;
+      color: rgba(255,255,255,.5);
+      margin-top: 20px !important;
+      margin-bottom: 0 !important;
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="site-logo" href="../">🌿 <span>Histórias</span> para Ler Juntos</a>
+    <nav class="site-nav">
+      <a href="../livros/">Biblioteca</a>
+      <a href="../sobre/" class="active">Sobre</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="content-page">
+    <h1 class="section__title">Sobre o projeto</h1>
+    <p style="color:var(--text-light);margin-bottom:32px">Uma biblioteca de livros infantis interativos e gratuitos.</p>
+
+    <h2>O que é isso?</h2>
+    <p>
+      <em>Histórias para Ler Juntos</em> é uma biblioteca digital de livros infantis interativos. As histórias foram criadas para serem lidas em voz alta por adultos e crianças — com momentos de escolha que mudam o caminho da narrativa.
+    </p>
+    <p>
+      Nenhum cadastro é necessário. Nenhum dado pessoal é coletado. As histórias são gratuitas.
+    </p>
+
+    <h2>Quem criou?</h2>
+    <p>
+      As histórias e o site foram criados por <strong>Tarcísio Guadalupe Buzelin</strong>.
+    </p>
+
+    <h2>Como funciona?</h2>
+    <p>
+      Cada livro tem uma série de páginas ilustradas. Em alguns momentos, a história pede que você e a criança tomem uma decisão juntos. Cada escolha leva a um caminho diferente, e é possível reiniciar para explorar outros caminhos.
+    </p>
+    <p>
+      O progresso fica salvo no dispositivo — nenhuma informação é enviada a servidores.
+    </p>
+
+    <h2>Licença</h2>
+    <p>
+      Os livros são disponibilizados sob a licença <a href="../licenca/">Creative Commons CC BY 4.0</a>. Você pode baixar, compartilhar, imprimir e adaptar, desde que a autoria seja atribuída corretamente.
+    </p>
+
+    <!-- DOAÇÃO -->
+    <div class="donation-box" id="doacao">
+      <h2>❤️ Apoie o projeto</h2>
+      <p>
+        Todos os livros são gratuitos. Se uma história proporcionou um momento especial para sua família, você pode contribuir voluntariamente para ajudar a criar novas aventuras.
+      </p>
+
+      <div class="pix-card">
+        <img
+          src="../assets/qrcode-pix.png"
+          alt="QR Code Pix — tarcisiogb@gmail.com"
+        >
+        <div>
+          <span class="pix-key__label">Chave Pix</span>
+          <button class="pix-key" onclick="copiarPix()" title="Copiar chave Pix">
+            📋 tarcisiogb@gmail.com
+          </button>
+        </div>
+        <div class="copied-msg" id="copiedMsg" style="opacity:0">✅ Chave copiada!</div>
+      </div>
+
+      <p class="donation-note">
+        Qualquer valor é bem-vindo e muito apreciado 💚
+      </p>
+    </div>
+
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__logo">🌿 Histórias para Ler Juntos</div>
+  <p>Projeto criado por <strong style="color:rgba(255,255,255,.8)">Tarcísio Guadalupe Buzelin</strong></p>
+  <p style="margin-top:6px">
+    <a href="../licenca/">Licença CC BY 4.0</a> ·
+    <a href="../privacidade/">Privacidade</a>
+  </p>
+</footer>
+
+<script>
+function copiarPix() {
+  navigator.clipboard.writeText('tarcisiogb@gmail.com').then(function() {
+    var msg = document.getElementById('copiedMsg');
+    msg.style.opacity = '1';
+    setTimeout(function() { msg.style.opacity = '0'; }, 2500);
+  });
+}
+</script>
+
+</body>
+</html>
