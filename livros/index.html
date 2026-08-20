@@ -5,132 +5,446 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Biblioteca — Histórias para Ler Juntos</title>
   <meta name="description" content="Livros infantis interativos gratuitos para pais e filhos lerem juntos.">
+  <link rel="icon" type="image/x-icon" href="../assets/favicon.ico">
+  <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&family=Nunito:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/css/style.css">
   <style>
-    .library-header {
-      padding: 48px 0 32px;
-      text-align: center;
+    /* ── Filtros ── */
+    .filters-wrap {
+      background: var(--cream-dark);
+      border-bottom: 1px solid rgba(0,0,0,.07);
+      position: sticky;
+      top: 58px;
+      z-index: 40;
+      padding: 14px 20px;
     }
+    .filters-inner {
+      max-width: 960px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .filters-row {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .filters-label {
+      font-size: .72rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--text-light);
+      margin-right: 4px;
+      white-space: nowrap;
+    }
+    .filter-chip {
+      font-family: 'Baloo 2', sans-serif;
+      font-size: .82rem;
+      font-weight: 700;
+      padding: 5px 14px;
+      border-radius: 30px;
+      border: 1.5px solid rgba(0,0,0,.12);
+      background: white;
+      color: var(--text-mid);
+      cursor: pointer;
+      transition: all .15s;
+      white-space: nowrap;
+    }
+    .filter-chip:hover { border-color: var(--forest-light); color: var(--forest-mid); }
+    .filter-chip.on {
+      background: var(--forest-mid);
+      border-color: var(--forest-mid);
+      color: white;
+    }
+    .filter-chip.on.tipo-interativo { background: #7c3aed; border-color: #7c3aed; }
+    .filter-chip.on.tipo-estatico   { background: var(--blue-magic); border-color: var(--blue-magic); }
+
+    /* Resultado count */
+    .results-bar {
+      max-width: 960px;
+      margin: 20px auto 0;
+      padding: 0 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .results-count {
+      font-size: .82rem;
+      color: var(--text-light);
+      font-weight: 700;
+    }
+    .results-clear {
+      font-size: .8rem;
+      color: var(--forest-light);
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      display: none;
+    }
+
+    /* ── Grade ── */
     .library-grid {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 16px 20px 80px;
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 28px;
-      padding-bottom: 64px;
+      gap: 24px;
     }
-    .book-card__cover-wrap {
-      position: relative;
+
+    /* ── Card ── */
+    .book-card { position: relative; }
+
+    .book-cover-wrap {
       width: 100%;
       aspect-ratio: 4/3;
       overflow: hidden;
       background: var(--forest-mid);
+      position: relative;
     }
-    .book-card__cover {
+    .book-cover-wrap img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       transition: transform .4s ease;
+      display: block;
     }
-    .book-card:hover .book-card__cover { transform: scale(1.04); }
-    .book-card__actions { display: flex; gap: 8px; flex-wrap: wrap; }
+    .book-card:hover .book-cover-wrap img { transform: scale(1.04); }
+
+    /* Badge tipo */
+    .badge-tipo {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      font-family: 'Baloo 2', sans-serif;
+      font-size: .68rem;
+      font-weight: 800;
+      letter-spacing: .5px;
+      padding: 3px 10px;
+      border-radius: 20px;
+      text-transform: uppercase;
+      z-index: 2;
+    }
+    .badge-tipo.interativo {
+      background: #7c3aed;
+      color: white;
+    }
+    .badge-tipo.estatico {
+      background: var(--blue-magic);
+      color: white;
+    }
+
+    /* Badge coleção */
+    .badge-colecao {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-family: 'Baloo 2', sans-serif;
+      font-size: .65rem;
+      font-weight: 800;
+      padding: 3px 9px;
+      border-radius: 20px;
+      background: rgba(0,0,0,.55);
+      color: rgba(255,255,255,.9);
+      z-index: 2;
+      backdrop-filter: blur(4px);
+    }
+
+    /* Em breve overlay */
+    .em-breve-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(13,43,26,.65);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 3;
+      backdrop-filter: blur(2px);
+    }
+    .em-breve-label {
+      font-family: 'Baloo 2', sans-serif;
+      font-size: .8rem;
+      font-weight: 800;
+      color: white;
+      background: rgba(0,0,0,.5);
+      padding: 5px 14px;
+      border-radius: 20px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .book-card__body {
+      padding: 14px 16px 18px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .book-card__title {
+      font-family: 'Baloo 2', sans-serif;
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--text-dark);
+      line-height: 1.2;
+    }
+    .book-card__desc {
+      font-size: .83rem;
+      color: var(--text-light);
+      line-height: 1.5;
+      flex: 1;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .book-card__meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      margin-top: 2px;
+    }
+    .book-card__actions {
+      display: flex;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    /* Estado vazio */
     .empty-state {
+      grid-column: 1/-1;
       text-align: center;
-      padding: 80px 20px;
+      padding: 60px 20px;
       color: var(--text-light);
     }
-    .empty-state p { margin-top: 12px; font-size: .95rem; }
+    .empty-state .icon { font-size: 3rem; margin-bottom: 12px; }
+    .empty-state p { font-size: .95rem; }
+
+    @media (max-width: 480px) {
+      .library-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
+      .book-card__desc { display: none; }
+      .book-card__body { padding: 10px 12px 14px; }
+    }
   </style>
 </head>
 <body>
 
-<!-- Cabeçalho do site -->
 <header class="site-header">
   <div class="site-header__inner">
-    <a class="site-logo" href="../">
-      🌿 <span>Histórias</span> para Ler Juntos
-    </a>
-    <nav class="site-nav" aria-label="Menu principal">
+    <a class="site-logo" href="../">🌿 <span>Histórias</span> para Ler Juntos</a>
+    <nav class="site-nav">
       <a href="../livros/" class="active">Biblioteca</a>
       <a href="../sobre/">Sobre</a>
     </nav>
   </div>
 </header>
 
-<!-- Conteúdo -->
-<main>
-  <div class="container">
+<!-- Filtros -->
+<div class="filters-wrap" id="filtersWrap">
+  <div class="filters-inner">
 
-    <div class="library-header">
-      <h1 class="section__title">📚 Biblioteca</h1>
-      <p class="section__sub">Escolha uma história para ler juntos.</p>
+    <!-- Linha 1: Tipo -->
+    <div class="filters-row">
+      <span class="filters-label">Tipo</span>
+      <button class="filter-chip on" data-filter="tipo" data-value="todos">Todos</button>
+      <button class="filter-chip tipo-interativo" data-filter="tipo" data-value="interativo">✦ Interativo</button>
+      <button class="filter-chip tipo-estatico"   data-filter="tipo" data-value="estatico">📖 História</button>
     </div>
 
-    <div class="library-grid" id="library-grid">
-      <!-- Preenchido via JS -->
+    <!-- Linha 2: Coleção + Temas (preenchidos via JS) -->
+    <div class="filters-row" id="row-colecao">
+      <span class="filters-label">Coleção</span>
+      <div id="chips-colecao" style="display:contents"></div>
+    </div>
+
+    <div class="filters-row" id="row-temas">
+      <span class="filters-label">Tema</span>
+      <div id="chips-temas" style="display:contents"></div>
     </div>
 
   </div>
+</div>
+
+<!-- Barra de resultado -->
+<div class="results-bar">
+  <span class="results-count" id="resultsCount"></span>
+  <span class="results-clear" id="resultsClear" onclick="limparFiltros()">Limpar filtros</span>
+</div>
+
+<!-- Grade -->
+<main>
+  <div class="library-grid" id="libraryGrid"></div>
 </main>
 
-<!-- Rodapé -->
 <footer class="site-footer">
   <div class="site-footer__logo">🌿 Histórias para Ler Juntos</div>
   <p>Projeto criado por <strong style="color:rgba(255,255,255,.8)">Tarcísio Guadalupe Buzelin</strong></p>
   <p style="margin-top:6px">
     <a href="../licenca/">Licença CC BY 4.0</a> ·
     <a href="../privacidade/">Privacidade</a> ·
-    <a href="../sobre/">Sobre o projeto</a>
+    <a href="../sobre/">Sobre</a>
   </p>
 </footer>
 
 <script>
 (function () {
-  var grid = document.getElementById('library-grid');
+  var catalog = [];
+  var filtros = { tipo: 'todos', colecao: 'todos', tema: 'todos' };
 
+  /* Labels amigáveis */
+  var colecaoLabels = { lucas: '📚 Lucas', standalone: '⭐ Avulsos' };
+  var temaLabels    = {
+    aventura: '🗺 Aventura', magia: '✨ Magia', amizade: '💚 Amizade',
+    familia: '👨‍👩‍👧 Família', copa: '⚽ Copa', noite: '🌙 Noite'
+  };
+
+  /* ── Carregar catálogo ── */
   fetch('../assets/js/catalog.json')
     .then(function (r) { return r.json(); })
-    .then(function (catalog) {
-      var published = catalog.filter(function (b) { return b.publicado; });
-
-      if (!published.length) {
-        grid.innerHTML = '<div class="empty-state"><div style="font-size:3rem">📖</div><p>Nenhuma história disponível ainda. Em breve!</p></div>';
-        return;
-      }
-
-      published.forEach(function (b) {
-        var tagsHtml = (b.tags || []).map(function (t) {
-          return '<span class="tag tag--forest">' + t + '</span>';
-        }).join('');
-
-        var card = document.createElement('article');
-        card.className = 'book-card';
-        card.innerHTML =
-          '<a href="../livro/?id=' + b.id + '" aria-label="Ler ' + b.titulo + '">' +
-            '<div class="book-card__cover-wrap">' +
-              '<img class="book-card__cover" src="../' + b.cover + '" alt="Capa de ' + b.titulo + '" loading="lazy">' +
-            '</div>' +
-          '</a>' +
-          '<div class="book-card__body">' +
-            '<h2 class="book-card__title">' + b.titulo + '</h2>' +
-            '<p class="book-card__desc">' + (b.descricao || '') + '</p>' +
-            '<div class="book-card__meta">' +
-              (b.faixaEtaria ? '<span class="tag">👧 ' + b.faixaEtaria + '</span>' : '') +
-              (b.tempoLeitura ? '<span class="tag">⏱ ' + b.tempoLeitura + '</span>' : '') +
-              tagsHtml +
-            '</div>' +
-            '<div class="book-card__actions">' +
-              '<a class="btn btn--primary btn--sm" href="../livro/?id=' + b.id + '">Começar aventura</a>' +
-            '</div>' +
-          '</div>';
-
-        grid.appendChild(card);
-      });
+    .then(function (data) {
+      catalog = data;
+      buildFilterChips();
+      render();
     })
     .catch(function () {
-      grid.innerHTML = '<div class="empty-state"><div style="font-size:3rem">🌲</div><p>Não foi possível carregar a biblioteca. Tente novamente.</p></div>';
+      document.getElementById('libraryGrid').innerHTML =
+        '<div class="empty-state"><div class="icon">🌲</div><p>Não foi possível carregar a biblioteca.</p></div>';
     });
+
+  /* ── Montar chips dinâmicos ── */
+  function buildFilterChips() {
+    var colecoes = [...new Set(catalog.map(function (b) { return b.colecao; }).filter(Boolean))];
+    var temas    = [...new Set(catalog.flatMap(function (b) { return b.temas || []; }))];
+
+    var cc = document.getElementById('chips-colecao');
+    var ct = document.getElementById('chips-temas');
+
+    // "Todas" sempre primeiro
+    cc.appendChild(chip('Todas', 'colecao', 'todos', true));
+    colecoes.forEach(function (c) {
+      cc.appendChild(chip(colecaoLabels[c] || c, 'colecao', c, false));
+    });
+
+    ct.appendChild(chip('Todos', 'tema', 'todos', true));
+    temas.forEach(function (t) {
+      ct.appendChild(chip(temaLabels[t] || t, 'tema', t, false));
+    });
+  }
+
+  function chip(label, filterKey, value, active) {
+    var btn = document.createElement('button');
+    btn.className = 'filter-chip' + (active ? ' on' : '');
+    btn.textContent = label;
+    btn.dataset.filter = filterKey;
+    btn.dataset.value  = value;
+    btn.addEventListener('click', function () { applyFilter(filterKey, value); });
+    return btn;
+  }
+
+  /* ── Aplicar filtro ── */
+  function applyFilter(key, value) {
+    filtros[key] = value;
+    // Atualizar visual dos chips
+    document.querySelectorAll('[data-filter="' + key + '"]').forEach(function (el) {
+      el.classList.toggle('on', el.dataset.value === value);
+    });
+    render();
+  }
+
+  function limparFiltros() {
+    filtros = { tipo: 'todos', colecao: 'todos', tema: 'todos' };
+    document.querySelectorAll('.filter-chip').forEach(function (el) {
+      el.classList.toggle('on', el.dataset.value === 'todos');
+    });
+    render();
+  }
+  window.limparFiltros = limparFiltros;
+
+  /* ── Renderizar grade ── */
+  function render() {
+    var filtered = catalog.filter(function (b) {
+      if (filtros.tipo !== 'todos'    && b.tipo    !== filtros.tipo)    return false;
+      if (filtros.colecao !== 'todos' && b.colecao !== filtros.colecao) return false;
+      if (filtros.tema !== 'todos'    && !(b.temas || []).includes(filtros.tema)) return false;
+      return true;
+    });
+
+    var grid = document.getElementById('libraryGrid');
+    grid.innerHTML = '';
+
+    // Contador
+    var count = document.getElementById('resultsCount');
+    var clear = document.getElementById('resultsClear');
+    var hasFilter = filtros.tipo !== 'todos' || filtros.colecao !== 'todos' || filtros.tema !== 'todos';
+    count.textContent = filtered.length + ' livro' + (filtered.length !== 1 ? 's' : '');
+    clear.style.display = hasFilter ? 'inline' : 'none';
+
+    if (!filtered.length) {
+      grid.innerHTML = '<div class="empty-state"><div class="icon">📭</div><p>Nenhum livro encontrado com esses filtros.</p></div>';
+      return;
+    }
+
+    filtered.forEach(function (b) {
+      grid.appendChild(buildCard(b));
+    });
+  }
+
+  /* ── Montar card ── */
+  function buildCard(b) {
+    var article = document.createElement('article');
+    article.className = 'book-card';
+
+    var tipoLabel  = b.tipo === 'interativo' ? '✦ Interativo' : '📖 História';
+    var colLabel   = colecaoLabels[b.colecao] || b.colecao || '';
+    var tagsHtml   = (b.temas || []).map(function (t) {
+      return '<span class="tag tag--forest">' + (temaLabels[t] || t) + '</span>';
+    }).join('');
+
+    var coverSrc = b.cover ? '../' + b.cover : '';
+    var coverHtml = coverSrc
+      ? '<img src="' + coverSrc + '" alt="Capa de ' + esc(b.titulo) + '" loading="lazy">'
+      : '<div style="width:100%;height:100%;background:var(--forest-mid);display:flex;align-items:center;justify-content:center;font-size:3rem;">📖</div>';
+
+    var breve = !b.publicado
+      ? '<div class="em-breve-overlay"><span class="em-breve-label">Em breve</span></div>'
+      : '';
+
+    var actionHtml = b.publicado
+      ? '<a class="btn btn--primary btn--sm" href="../livro/?id=' + b.id + '">Começar</a>'
+      : '<button class="btn btn--secondary btn--sm" disabled style="opacity:.5;cursor:default">Em breve</button>';
+
+    article.innerHTML =
+      '<div class="book-cover-wrap">' +
+        coverHtml +
+        '<span class="badge-tipo ' + (b.tipo||'') + '">' + tipoLabel + '</span>' +
+        (colLabel ? '<span class="badge-colecao">' + colLabel + '</span>' : '') +
+        breve +
+      '</div>' +
+      '<div class="book-card__body">' +
+        '<div class="book-card__title">' + esc(b.titulo) + '</div>' +
+        '<div class="book-card__desc">' + esc(b.descricao || '') + '</div>' +
+        '<div class="book-card__meta">' +
+          (b.faixaEtaria ? '<span class="tag">👧 ' + esc(b.faixaEtaria) + '</span>' : '') +
+          (b.tempoLeitura ? '<span class="tag">⏱ ' + esc(b.tempoLeitura) + '</span>' : '') +
+          tagsHtml +
+        '</div>' +
+        '<div class="book-card__actions">' + actionHtml + '</div>' +
+      '</div>';
+
+    return article;
+  }
+
+  function esc(str) {
+    return String(str||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+
 })();
 </script>
 
